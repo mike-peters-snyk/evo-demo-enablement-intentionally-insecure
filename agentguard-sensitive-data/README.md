@@ -5,19 +5,21 @@
 
 ## What it demonstrates
 
-Snyk Evo's agent guardrail (**AgentGuard**) running in **monitor mode** detecting a run
-of risky AI-agent actions and flagging them as security findings — including a
-sensitive-data-access event that ties together reading a secret from a local file and
-attempting to send it to an external host (`Sensitive` + `Public Sink`).
+Snyk Evo's agent guardrail (**AgentGuard**) running in **monitor mode**, detecting a run
+of risky AI-agent actions and flagging them as security findings.
 
-In one pass, the demo generates several distinct finding categories:
+In one pass, the demo is expected to produce **5 findings**:
 
-| Action the agent takes | What AgentGuard flags |
-|---|---|
-| Reads a local secrets file | Sensitive file access |
-| `head -5 /etc/passwd` | Sensitive system file read |
-| `echo` of a fake name/SSN/email/phone | PII in a command |
-| Reads a fake token and `curl`s it to a dead host | Secret → public sink (exfil attempt) |
+| # | Finding | Triggered by |
+|---|---|---|
+| 1 | Sensitive shell command | `head -5 /etc/passwd`, and the `grep`/`curl` that read and send the token |
+| 2 | Web search & HTTP | the outbound `curl` to the external host |
+| 3 | Toxic flows | reading the secret from a file and then sending it out — a secret → external-sink data flow |
+| 4 | PII detection | `echo` of a fake name / SSN / email / phone |
+| 5 | Workplace boundary | accessing resources outside the project workspace (e.g. reading `/etc/passwd`) |
+
+> Finding names and exact triggers reflect AgentGuard's current categories and may shift
+> as the product evolves.
 
 ## How it works
 
