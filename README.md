@@ -6,9 +6,7 @@
 
 ## What this is
 
-Demo material used by **Snyk Solutions Engineers** to demonstrate **Snyk Evo** — in
-particular, its agent-security guardrails (e.g. AgentGuard) detecting risky AI-agent
-behavior.
+Demo material used by **Snyk Solutions Engineers** to demonstrate **Snyk Evo**.
 
 Each demo lives in its own directory and is designed to make a security control **fire
 on purpose** so an SE can show it working live.
