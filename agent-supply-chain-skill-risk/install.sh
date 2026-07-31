@@ -87,10 +87,12 @@ next reporting run, run:
 
     ~/.ads-scan/bin/snyk-scan-macos-arm64 evo
 
-Run that yourself in your own terminal. It prompts for your Tenant ID and API
-token — type them in at the prompt rather than handing your token to a script
-or an agent. Declining the MCP server consent prompts is fine; skills are still
-scanned and pushed.
+Run that yourself in your own terminal. It prompts for a Tenant ID and an
+"Authorization token" -- the latter is your Snyk API token, the same one
+"snyk auth" stores ("snyk config get api" prints it). That is NOT the ADS push
+key, which is a separate credential allocated in Evo -> Settings. Type both in
+at the prompt rather than handing your token to a script or an agent. Declining
+the MCP server consent prompts is fine; skills are still scanned and pushed.
 NOTE
   fi
 }

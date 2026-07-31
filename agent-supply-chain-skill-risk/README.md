@@ -95,7 +95,13 @@ terminal:
 It will interactively prompt you for two values. Type them in at the prompt:
 
 1. **Tenant ID** — `app.snyk.io` → select your tenant in the left nav → copy the UUID from the URL
-2. **API token** — `app.snyk.io/account` → API Token → KEY → click to show
+2. **Authorization token** — your **Snyk API token**, the same one `snyk auth` stores. If
+   you've already run `snyk auth`, `snyk config get api` prints it.
+
+> **Heads up:** the prompt suggests fetching the token from `app.snyk.io/account` →
+> "API Token → KEY → click to show." Your `snyk auth` token is the same credential and is
+> easier to get. **This is not the ADS push key** — that's a different value, covered
+> below.
 
 > **Run this yourself.** Don't paste your API token into an agent session, a script, or a
 > chat window to have something else run it for you. It's an interactive prompt precisely
@@ -111,9 +117,13 @@ scan and report as part of installation:
 curl -fsSL -o /tmp/ads-installer https://downloads.snyk.io/ads/installer/latest/ads-installer-macos-arm64 && chmod +x /tmp/ads-installer
 ```
 
-Then run it yourself with your own push key from **Evo → Settings** — again, typed by you,
-not handed to anything else. Prefix the line with a space so it stays out of your shell
-history:
+This path uses a **push key**, which is a *different* credential from the API token above.
+Log in to **Evo → Settings** and allocate one, and **enable "machines" when you allocate
+it** — otherwise the installer's scan won't be accepted. Copy it at allocation time; that's
+your chance to capture the value.
+
+Then run it yourself — again, typed by you, not handed to anything else. Prefix the line
+with a space so it stays out of your shell history:
 
 ```
  PUSH_KEY='<your-push-key>' /tmp/ads-installer
