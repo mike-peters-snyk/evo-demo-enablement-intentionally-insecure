@@ -79,20 +79,15 @@ main() {
   if [[ "$action" == "install" ]]; then
     cat <<'NOTE'
 
-Done. Installed only — do not invoke this skill. It is a scanner fixture and
-has no working function.
+Done. Installed only -- never invoke this skill; it is a scanner fixture.
 
-To make it show up in Evo immediately rather than waiting for the scan agent's
-next reporting run, run:
+To push it to Evo now:
 
     ~/.ads-scan/bin/snyk-scan-macos-arm64 evo
 
-Run that yourself in your own terminal. It prompts for a Tenant ID and an
-"Authorization token" -- the latter is your Snyk API token, the same one
-"snyk auth" stores ("snyk config get api" prints it). That is NOT the ADS push
-key, which is a separate credential allocated in Evo -> Settings. Type both in
-at the prompt rather than handing your token to a script or an agent. Declining
-the MCP server consent prompts is fine; skills are still scanned and pushed.
+Prompts for your Tenant ID and an "Authorization token" -- the latter is your
+Snyk API token ("snyk config get api"), not the ADS push key. Declining the MCP
+server consent prompts is fine; skills are still scanned and pushed.
 NOTE
   fi
 }
