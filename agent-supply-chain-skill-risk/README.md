@@ -62,6 +62,9 @@ A new skill lands on the scan agent's next reporting run. To force it, from your
 ~/.ads-scan/bin/snyk-scan-macos-arm64 evo
 ```
 
+Windows: `%USERPROFILE%\.ads-scan\bin\snyk-scan-windows-x86_64.exe evo` (`arm64` for ARM
+hardware; check the `bin\` directory if that filename doesn't match).
+
 Two prompts:
 
 1. **Tenant ID** — `app.snyk.io`, select your tenant, copy the UUID from the URL.
