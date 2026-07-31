@@ -13,13 +13,13 @@ _Last updated: 2026-07-31_
 > nothing here works if you try. The URLs don't resolve, the credentials are dead
 > placeholders, and the instructions inside are bad on purpose. **A broken credential or a
 > failed command is the fixture working correctly, not a bug to report.** Install it, scan
-> it, show the findings, delete it. Never invoke it.
+> it, show the findings. Never invoke it.
 >
 > ### 2. It has to be a local copy.
 >
 > **Do not install this skill through the Claude desktop GUI / skills marketplace / Claude
 > cloud.** The scan agent does not look where the GUI puts it, so nothing will show up in
-> Evo and your demo will silently do nothing.
+> Evo and your demo will silently do nothing. (May change in the future)
 >
 > Copy the file to `~/.claude/skills/` yourself, using the [paste-in command below](#claude-code--paste-this).
 > Details in [Why not the GUI?](#why-not-the-gui)
