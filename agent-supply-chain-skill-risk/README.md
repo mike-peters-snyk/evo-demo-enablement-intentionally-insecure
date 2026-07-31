@@ -54,7 +54,7 @@ Other clients — same file, different destination:
 with `--uninstall`. Fetch and read it rather than piping to bash — this demos a product
 that flags that pattern.
 
-## Show it in Evo now
+## To Display in Evo Immediately
 
 A new skill lands on the scan agent's next reporting run. To force it, from your terminal:
 
