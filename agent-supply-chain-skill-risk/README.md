@@ -14,7 +14,7 @@ _Last updated: 2026-07-31_
 >
 > **It has to be a local copy.** Installing via the Claude desktop GUI / skills marketplace
 > won't work — the scan agent doesn't look there, so your demo silently does nothing.
-> (May change in the future) Why, below.
+> (May change in the future)
 
 ## What it demonstrates
 
