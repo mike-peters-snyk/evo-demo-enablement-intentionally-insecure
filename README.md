@@ -45,5 +45,6 @@ that, there's nothing useful here for you.
 | Directory | Demonstrates |
 |---|---|
 | [`agentguard-sensitive-data/`](agentguard-sensitive-data/) | Evo / AgentGuard detecting sensitive-data access and an attempted secret→public-sink exfil |
+| [`agent-supply-chain-skill-risk/`](agent-supply-chain-skill-risk/) | Evo / Agent Supply Chain Security scanning installed agent skills and flagging a malicious one (7 High findings) |
 
 _More demos are added as separate directories over time._
