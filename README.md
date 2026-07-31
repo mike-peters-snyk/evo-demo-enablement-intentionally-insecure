@@ -4,6 +4,8 @@
 > software equivalent of an [EICAR test string](https://en.wikipedia.org/wiki/EICAR_test_file).
 > Nothing here is meant to run against real systems, and nothing here does real harm.**
 
+_Last updated: 2026-07-31_
+
 ## What this is
 
 Demo material used by **Snyk Solutions Engineers** to demonstrate **Snyk Evo**.

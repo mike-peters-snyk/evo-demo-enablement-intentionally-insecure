@@ -3,6 +3,8 @@
 > ⚠️ Intentionally-insecure demo fixture. See the [repo README](../README.md). Fake
 > credentials, non-resolving hosts, no real harm. Do not use outside an Evo demo.
 
+_Last updated: 2026-07-31_
+
 ## What it demonstrates
 
 Snyk Evo's agent guardrail (**AgentGuard**) running in **monitor mode**, detecting a run
