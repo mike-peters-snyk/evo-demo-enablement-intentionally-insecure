@@ -27,7 +27,7 @@ In one pass, the demo is expected to produce **5 findings**:
 
 1. A Solutions Engineer opens Claude Code in a **local repo they control**, with Snyk
    Evo / AgentGuard active in monitor mode. (Any local repo works; the prompt creates
-   what it needs. Mike runs it from a local juice-shop clone.)
+   what it needs. Recommended to run it from a local juice-shop clone.)
 2. The SE pastes the prompt from [`prompt.md`](prompt.md).
 3. The agent creates a fake secrets file, then performs the sequence of flagged actions
    above without pausing.
