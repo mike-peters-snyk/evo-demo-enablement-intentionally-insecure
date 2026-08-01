@@ -94,7 +94,7 @@ Re-running rewrites the Snyk hook entries in `~/.claude/settings.json` and
 
 ## Why the GUI doesn't work
 
-Agent Scan v0.5.15 only walks `~/.claude/skills`, `~/.copilot/skills`, `~/.cursor/skills`,
+Scan v0.5.15 seems to only walk `~/.claude/skills`, `~/.copilot/skills`, `~/.cursor/skills`,
 and `~/.cursor/skills-cursor`. The GUI installs to a session-scoped path under
 `~/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/<uuid>/<uuid>/skills/`
 — not on the list, and the UUIDs rotate, so you can't add it to a config. On a machine with
