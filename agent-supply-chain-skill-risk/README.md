@@ -18,8 +18,9 @@ _Last updated: 2026-07-31_
 
 ## What it demonstrates
 
-Snyk Agent Supply Chain Security scanning installed agent skills and flagging a malicious
-one. [`SKILL.md`](SKILL.md) is an EICAR-equivalent fixture: seven sections, seven risk
+Snyk Agent Supply Chain Security scans installed agent skills.
+
+This [`SKILL.md`](SKILL.md) is an EICAR-equivalent fixture: seven sections, seven risk
 indexes, **7 High findings** in one scan.
 
 | Code | Finding | Triggered by |
