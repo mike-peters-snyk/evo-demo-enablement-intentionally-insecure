@@ -25,13 +25,13 @@ In one pass, the demo is expected to produce **5 findings**:
 
 ## How it works
 
-1. A Solutions Engineer opens Claude Code in a **local repo they control**, with Snyk
+1. Open Claude Code in a **local repo you control**, with Snyk
    Evo / AgentGuard active in monitor mode. (Any local repo works; the prompt creates
    what it needs. Recommended to run it from a local juice-shop clone.)
-2. The SE pastes the prompt from [`prompt.md`](prompt.md).
+2. Paste the prompt from [`prompt.md`](prompt.md).
 3. The agent creates a fake secrets file, then performs the sequence of flagged actions
    above without pausing.
-4. AgentGuard records the findings; the SE walks through them in the Evo results view.
+4. AgentGuard records the findings.
 
 **Recommended model: Claude Opus 4.8.**
 
