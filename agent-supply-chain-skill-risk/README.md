@@ -3,7 +3,7 @@
 > ⚠️ Intentionally-insecure demo fixture. See the [repo README](../README.md). Fake
 > credentials, non-resolving hosts, no real harm. Do not use outside an Evo demo.
 
-_Last updated: 2026-07-31_
+_Last updated: 2026-08-05_
 
 > ## 🛑 Two rules
 >
@@ -34,6 +34,10 @@ indexes, **7 High findings** in one scan.
 | `W013` | Modify system services | `sudo tee -a /etc/hosts`, `sudo launchctl unload` |
 
 `E006` fires on the file as a whole, so the section-to-finding mapping isn't strictly 1:1.
+
+**If you only get 6, just scan again.** `E004` is the one that drops — analysis is
+LLM-backed and not fully deterministic, and the same scan can even report 7 under one client
+and 6 under another. Nothing is wrong with the fixture.
 
 ## Install
 
