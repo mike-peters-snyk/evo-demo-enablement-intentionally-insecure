@@ -35,9 +35,7 @@ indexes, **7 High findings** in one scan.
 
 `E006` fires on the file as a whole, so the section-to-finding mapping isn't strictly 1:1.
 
-**If you only get 6, just scan again.** `E004` is the one that drops — analysis is
-LLM-backed and not fully deterministic, and the same scan can even report 7 under one client
-and 6 under another. Nothing is wrong with the fixture.
+**If you only get 6, just scan again.** Scans are non-deterministic and `E004` is occasionally missed.
 
 ## Install
 
