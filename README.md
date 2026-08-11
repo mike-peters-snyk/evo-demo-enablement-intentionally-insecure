@@ -51,4 +51,4 @@ _More demos are added as separate directories over time._
 
 ## Troubleshooting — demo runs but nothing shows up?
 
-If a demo runs cleanly (hooks fire, no errors) but **no findings appear in your Evo dashboard**, your Agent Guard push key has most likely gone stale — an org-wide install issue in early Aug 2026 invalidated many keys. Re-run your Agent Guard install to refresh the key, restart your agent (Claude Code loads hooks at startup), then re-run the demo and confirm a real event lands. A "200 OK" from the hook is *not* proof events are visible — only seeing one in the dashboard is.
+If a demo runs cleanly (hooks fire, no errors) but **no findings appear in your Evo dashboard**, your Agent Guard push key has most likely gone stale. Re-run your Agent Guard install to refresh the key, restart your agent (Claude Code loads hooks at startup), then re-run the demo and confirm a real event lands. A "200 OK" from the hook is *not* proof events are visible — only seeing one in the dashboard is.
