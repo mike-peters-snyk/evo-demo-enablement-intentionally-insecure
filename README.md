@@ -4,7 +4,7 @@
 > software equivalent of an [EICAR test string](https://en.wikipedia.org/wiki/EICAR_test_file).
 > Nothing here is meant to run against real systems, and nothing here does real harm.**
 
-_Last updated: 2026-07-31_
+_Last updated: 2026-08-11_
 
 ## What this is
 
@@ -48,3 +48,7 @@ that, there's nothing useful here for you.
 | [`agent-supply-chain-skill-risk/`](agent-supply-chain-skill-risk/) | Evo / Agent Supply Chain Security scanning installed agent skills and flagging a malicious one (7 High findings) |
 
 _More demos are added as separate directories over time._
+
+## Troubleshooting — demo runs but nothing shows up?
+
+If a demo runs cleanly (hooks fire, no errors) but **no findings appear in your Evo dashboard**, your Agent Guard push key has most likely gone stale — an org-wide install issue in early Aug 2026 invalidated many keys. Re-run your Agent Guard install to refresh the key, restart your agent (Claude Code loads hooks at startup), then re-run the demo and confirm a real event lands. A "200 OK" from the hook is *not* proof events are visible — only seeing one in the dashboard is.
