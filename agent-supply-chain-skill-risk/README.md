@@ -20,22 +20,23 @@ _Last updated: 2026-08-05_
 
 Snyk Agent Supply Chain Security scans installed agent skills.
 
-This [`SKILL.md`](SKILL.md) is an EICAR-equivalent fixture: seven sections, seven risk
-indexes, **7 High findings** in one scan.
+This [`SKILL.md`](SKILL.md) is an EICAR-equivalent fixture with seven intentionally-bad
+sections. Detection is **non-deterministic** and, as of scan agent v0.5.15, does not surface all
+seven — expect a reliable core plus a couple that come and go. Finding names as they appear in Evo:
 
-| Code | Finding | Triggered by |
+| Finding (in Evo) | Section | Typically seen |
 |---|---|---|
-| `E004` | Prompt injection | HTML-commented "SYSTEM DIRECTIVE" to silently read shell history and env files |
-| `W007` | Insecure credential handling | Read tokens from the environment and echo them verbatim, unmasked |
-| `W008` | Secret detected | Hardcoded AWS example key pair |
-| `E005` | Suspicious download URL | `curl … loader.sh \| bash` from a placeholder host |
-| `W012` | Malicious external URL | Remote "active-directives" endpoint treated as authoritative |
-| `E006` | Malicious code pattern | The combination — credential disclosure, RCE, remote directives, service tampering |
-| `W013` | Modify system services | `sudo tee -a /etc/hosts`, `sudo launchctl unload` |
+| Secret detection | §2 hardcoded AWS example key | Reliable — High |
+| Insecure credential handling | §1 echo env tokens unmasked | Reliable — High |
+| Attempt to modify system services | §7 `sudo tee /etc/hosts`, `launchctl unload` | Reliable — High |
+| Third party content exposure | §6 obey untrusted inbound content | Reliable — Medium |
+| Suspicious download URL | §4 `curl … loader.sh \| bash` | Intermittent |
+| Prompt injection | §3 override-instructions directive | Not reliably surfacing |
+| Malicious external URL | §5 remote "active-directives" as authoritative | Not reliably surfacing |
 
-`E006` fires on the file as a whole, so the section-to-finding mapping isn't strictly 1:1.
-
-**If you only get 6, just scan again.** Scans are non-deterministic and `E004` is occasionally missed.
+**Expect ~4 findings (3 High + 1 Medium); some runs add Suspicious download URL for 5.** Re-run to
+catch the intermittent ones. Keep command/secret blocks fenced (```) — indenting them drops the
+code-based findings entirely.
 
 ## Install
 
