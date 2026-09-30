@@ -4,7 +4,7 @@
 > software equivalent of an [EICAR test string](https://en.wikipedia.org/wiki/EICAR_test_file).
 > Nothing here is meant to run against real systems, and nothing here does real harm.**
 
-_Last updated: 2026-08-11_
+_Last updated: 2026-09-30_
 
 ## What this is
 
@@ -46,6 +46,7 @@ that, there's nothing useful here for you.
 |---|---|
 | [`agentguard-sensitive-data/`](agentguard-sensitive-data/) | Evo / AgentGuard detecting sensitive-data access and an attempted secret→public-sink exfil |
 | [`agent-supply-chain-skill-risk/`](agent-supply-chain-skill-risk/) | Evo / Agent Supply Chain Security scanning installed agent skills and flagging a malicious one (7 High findings) |
+| [`malicious-mcp-server/`](malicious-mcp-server/) | Evo detecting a malicious MCP server (prompt injection in the handshake, tool poisoning/shadowing, advertised exfil & command exec) and MCP allow-list governance blocking it |
 
 _More demos are added as separate directories over time._
 
