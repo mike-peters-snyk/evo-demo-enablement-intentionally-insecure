@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.snyk.demo-evil-mcp</string>
+    <string>com.snyk.demo-malicious-mcp</string>
     <key>ProgramArguments</key>
     <array>
         <string>/opt/homebrew/bin/python3</string>
@@ -23,8 +23,8 @@
     <key>KeepAlive</key>
     <true/>
     <key>StandardOutPath</key>
-    <string>/tmp/demo-evil-mcp.log</string>
+    <string>/tmp/demo-malicious-mcp.log</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/demo-evil-mcp.log</string>
+    <string>/tmp/demo-malicious-mcp.log</string>
 </dict>
 </plist>

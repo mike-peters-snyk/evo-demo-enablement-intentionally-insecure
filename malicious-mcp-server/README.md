@@ -60,10 +60,10 @@ treat whatever surfaces as expected.
 ```bash
 cd malicious-mcp-server
 python3 server.py --http 8765 &     # start the inert server (loopback only); or use the LaunchAgent below
-claude mcp add --transport http demo-evil-mcp http://127.0.0.1:8765/mcp
+claude mcp add --transport http demo-malicious-mcp http://127.0.0.1:8765/mcp
 ```
 
-Then confirm together: `claude mcp list` should show `demo-evil-mcp` — **✔ Connected**.
+Then confirm together: `claude mcp list` should show `demo-malicious-mcp` — **✔ Connected**.
 
 Keep it **local to this directory** (the default scope). Do **not** add `--scope user`, or the
 poisoned instructions load into *every* Claude session on the machine — that trips the classifier
@@ -73,7 +73,7 @@ on unrelated work and buries real detections in noise.
 instead (edit the path):
 
 ```bash
-claude mcp add demo-evil-mcp -- python3 /ABSOLUTE/PATH/TO/malicious-mcp-server/server.py
+claude mcp add demo-malicious-mcp -- python3 /ABSOLUTE/PATH/TO/malicious-mcp-server/server.py
 ```
 
 ## The demo
@@ -81,7 +81,7 @@ claude mcp add demo-evil-mcp -- python3 /ABSOLUTE/PATH/TO/malicious-mcp-server/s
 The server is already registered, so the demo is simply showing it caught:
 
 1. In Evo, run a scan / refresh so the registered MCP server is picked up.
-2. Show `demo-evil-mcp` flagged, with its findings.
+2. Show `demo-malicious-mcp` flagged, with its findings.
 3. *(Optional)* Show MCP allow-list governance blocking a connection to a server that isn't on
    your policy.
 
@@ -91,13 +91,13 @@ stale Agent Guard push key is the usual cause.
 ## Auto-start on login (optional, macOS)
 
 So the server survives reboots and you don't take it up and down between demos.
-[`com.snyk.demo-evil-mcp.plist`](com.snyk.demo-evil-mcp.plist) is a LaunchAgent that keeps it
+[`com.snyk.demo-malicious-mcp.plist`](com.snyk.demo-malicious-mcp.plist) is a LaunchAgent that keeps it
 running (`RunAtLoad` + `KeepAlive`). **Edit the two absolute paths** (the `python3` path and the
 `server.py` path) for your machine, then:
 
 ```bash
-cp com.snyk.demo-evil-mcp.plist ~/Library/LaunchAgents/
-launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.snyk.demo-evil-mcp.plist
+cp com.snyk.demo-malicious-mcp.plist ~/Library/LaunchAgents/
+launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.snyk.demo-malicious-mcp.plist
 ```
 
 The port can only be bound once — stop any manual instance before bootstrapping the agent, or the
@@ -113,7 +113,7 @@ one and how to change it if your environment needs something different.
 | **Transport** | HTTP over `127.0.0.1:8765` | Register over stdio instead (see the stdio fallback above). Some scanners only pick up stdio. |
 | **Port** | `8765` | Change it in the `claude mcp add` URL **and** in the LaunchAgent plist. |
 | **Registration scope** | **Local to this directory** — only sessions started here load the server | Add `--scope user` to make it global for every session on the machine. Discouraged: the poisoned instructions then trip the classifier during unrelated work and bury real detections. |
-| **Runs at startup** | Yes — the LaunchAgent (`RunAtLoad` + `KeepAlive`) keeps it up across reboots | Skip the plist and run `python3 server.py --http 8765` by hand per session; or `launchctl bootout "gui/$(id -u)/com.snyk.demo-evil-mcp"` to disable an installed agent. |
+| **Runs at startup** | Yes — the LaunchAgent (`RunAtLoad` + `KeepAlive`) keeps it up across reboots | Skip the plist and run `python3 server.py --http 8765` by hand per session; or `launchctl bootout "gui/$(id -u)/com.snyk.demo-malicious-mcp"` to disable an installed agent. |
 | **Bind address** | Loopback only (`127.0.0.1`); foreign `Host`/`Origin` get a 403 | Leave it. Do **not** expose it on the network — repo ground rule #3 (never repoint a demo at a real/resolvable host). |
 | **Behavior** | Inert — canned responses, `.invalid` hosts, AWS's published example key | Leave it. The "badness" is metadata only; making it actually act defeats the point and breaks the EICAR-style safety. |
 
@@ -128,8 +128,8 @@ one and how to change it if your environment needs something different.
 ## Cleanup
 
 ```bash
-claude mcp remove demo-evil-mcp
-launchctl bootout "gui/$(id -u)/com.snyk.demo-evil-mcp" 2>/dev/null
-rm -f ~/Library/LaunchAgents/com.snyk.demo-evil-mcp.plist
+claude mcp remove demo-malicious-mcp
+launchctl bootout "gui/$(id -u)/com.snyk.demo-malicious-mcp" 2>/dev/null
+rm -f ~/Library/LaunchAgents/com.snyk.demo-malicious-mcp.plist
 pkill -f "server.py --http"
 ```
