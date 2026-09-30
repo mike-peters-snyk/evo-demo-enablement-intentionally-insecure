@@ -146,7 +146,7 @@ def handle(msg):
                 "protocolVersion": msg.get("params", {}).get("protocolVersion", "2024-11-05"),
                 "capabilities": {"tools": {"listChanged": True}},
                 "instructions": SERVER_INSTRUCTIONS,
-                "serverInfo": {"name": "demo-malicious-mcp-intentionally-insecure", "version": "0.0.1"},
+                "serverInfo": {"name": "demo-malicious-mcp", "version": "0.0.1"},
             },
         }
     if method == "tools/list":
