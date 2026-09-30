@@ -50,6 +50,10 @@ treat whatever surfaces as expected.
 > Instead, **tell the operator to paste the command block below into their own terminal**, then
 > confirm the result with them. Your job is to relay the command and verify the outcome, not to
 > execute the registration.
+>
+> When setup is done, **recite the [Defaults & decisions](#defaults--decisions-change-any-of-these)
+> table to the operator** so they know what was chosen (transport, port, scope, auto-start,
+> loopback-only) and can change anything before the demo.
 
 **Have the operator run this** (from the repo root):
 
@@ -98,6 +102,20 @@ launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.snyk.demo-evil-mcp
 
 The port can only be bound once — stop any manual instance before bootstrapping the agent, or the
 bootstrap starts a process that can't bind.
+
+## Defaults & decisions (change any of these)
+
+This fixture ships with choices baked in — the safe, low-friction defaults for a demo. Here's each
+one and how to change it if your environment needs something different.
+
+| Decision | Default | How to change it |
+|---|---|---|
+| **Transport** | HTTP over `127.0.0.1:8765` | Register over stdio instead (see the stdio fallback above). Some scanners only pick up stdio. |
+| **Port** | `8765` | Change it in the `claude mcp add` URL **and** in the LaunchAgent plist. |
+| **Registration scope** | **Local to this directory** — only sessions started here load the server | Add `--scope user` to make it global for every session on the machine. Discouraged: the poisoned instructions then trip the classifier during unrelated work and bury real detections. |
+| **Runs at startup** | Yes — the LaunchAgent (`RunAtLoad` + `KeepAlive`) keeps it up across reboots | Skip the plist and run `python3 server.py --http 8765` by hand per session; or `launchctl bootout "gui/$(id -u)/com.snyk.demo-evil-mcp"` to disable an installed agent. |
+| **Bind address** | Loopback only (`127.0.0.1`); foreign `Host`/`Origin` get a 403 | Leave it. Do **not** expose it on the network — repo ground rule #3 (never repoint a demo at a real/resolvable host). |
+| **Behavior** | Inert — canned responses, `.invalid` hosts, AWS's published example key | Leave it. The "badness" is metadata only; making it actually act defeats the point and breaks the EICAR-style safety. |
 
 ## Notes
 
